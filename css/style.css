@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.yeet {
+  position: absolute;
+  top: 1.5%;
+  left: 5%;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.wind {
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  color: #fff;
+}
+
+.speed {
+  position: absolute;
+  top: 3%;
+  left: 20%;
+  color: #fff;
+}
+
+.acceleration {
+  position: absolute;
+  top: 3%;
+  left: 35%;
+  color: #fff;
+}
+
+.distance {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  color: #fff;
+}
