@@ -11,7 +11,7 @@ let height = window.innerHeight;
 
 let VinitVelocity, HinitVelocity;
 
-var wind = Math.random() / 5;
+var wind = Math.random();
 
 var render = Render.create({
   element: document.body,
@@ -34,7 +34,7 @@ var ground = Bodies.rectangle(0, height - 30, width * 2, 60, {
 var ball = Bodies.circle(80, height - 100, 15, {
   restitution: 1,
   frictionAir: wind,
-  mass: 0.8,
+  mass: 1,
   render: {
     fillStyle: "white"
   }
@@ -63,7 +63,7 @@ $(".yeet").on("click", function() {
   Body.applyForce(
     ball,
     { x: ball.position.x, y: ball.position.y },
-    { x: 0.09, y: -0.2 }
+    { x: 1.1, y: -0.9 }
   );
 
   start = new Date();
