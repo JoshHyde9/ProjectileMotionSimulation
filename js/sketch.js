@@ -55,6 +55,7 @@ Engine.run(engine);
 Render.run(render);
 
 let t, a, v, s;
+let start, interval, end;
 
 document.getElementById("wind").innerHTML = ((wind * 100) / 1.852).toFixed(3);
 
@@ -64,14 +65,13 @@ $(".yeet").on("click", function() {
     { x: ball.position.x, y: ball.position.y },
     { x: 0.09, y: -0.2 }
   );
-  timer = setInterval(time, 1);
+  start = new Date();
 });
 
-function time() {
-  let d = new Date();
-  let ms = d.getMilliseconds();
-  t = ms / 1000;
-}
+let time = setInterval(function() {
+  let totTime = Date.now() - start;
+  t = (totTime / 1000).toFixed(3);
+}, 1);
 
 setInterval(function() {
   v = ball.speed / 3.6;
@@ -83,12 +83,10 @@ setInterval(function() {
 
   if (yPos == 677) {
     ball.isStatic = true;
-    if (timer) {
-      clearInterval(timer);
-      calculations();
-      document.getElementById("acc").innerHTML = a.toFixed(3);
-      document.getElementById("dist").innerHTML = s.toFixed(3);
-    }
+    clearInterval(time);
+    calculations();
+    document.getElementById("acc").innerHTML = a.toFixed(3);
+    document.getElementById("dist").innerHTML = s.toFixed(3);
   }
 }, 10);
 
