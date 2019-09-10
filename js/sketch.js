@@ -9,7 +9,7 @@ var engine = Engine.create();
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-let VinitVelocity, HinitVelocity, angle;
+let VinitVelocity, HinitVelocity;
 
 var wind = Math.random() / 5;
 
@@ -55,7 +55,7 @@ Engine.run(engine);
 Render.run(render);
 
 let t, a, v, s;
-let start, interval, end;
+let time, start, end;
 
 document.getElementById("wind").innerHTML = ((wind * 100) / 1.852).toFixed(3);
 
@@ -65,13 +65,13 @@ $(".yeet").on("click", function() {
     { x: ball.position.x, y: ball.position.y },
     { x: 0.09, y: -0.2 }
   );
-  start = new Date();
-});
 
-let time = setInterval(function() {
-  let totTime = Date.now() - start;
-  t = (totTime / 1000).toFixed(3);
-}, 1);
+  start = new Date();
+  time = setInterval(function() {
+    let totTime = Date.now() - start;
+    t = (totTime / 1000).toFixed(3);
+  }, 1);
+});
 
 setInterval(function() {
   v = ball.speed / 3.6;
