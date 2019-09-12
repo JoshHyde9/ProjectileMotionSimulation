@@ -10,7 +10,7 @@ let width = window.innerWidth;
 let height = window.innerHeight;
 
 var min = 0.1;
-var max = 0.005;
+var max = 0.008;
 var wind = Math.random() * (+max - +min) + +min;
 document.getElementById("wind").innerHTML = ((wind * 1000) / 1.852).toFixed(3);
 
@@ -21,14 +21,18 @@ var render = Render.create({
     width: width,
     height: height,
     wireframes: false,
-    background: "rgb(50,50,50)"
+    background: "../img/background.jpg"
   }
 });
 
 var ground = Bodies.rectangle(0, height - 30, width * 2, 60, {
   isStatic: true,
   render: {
-    fillStyle: "grey"
+    sprite: {
+      texture: "../img/grass.jpg",
+      xOffset: -0.25 * 2,
+      yOffset: 0.008
+    }
   }
 });
 
@@ -37,7 +41,9 @@ var ball = Bodies.circle(80, height - 100, 15, {
   frictionAir: wind,
   mass: 1,
   render: {
-    fillStyle: "white"
+    sprite: {
+      texture: "../img/ball.png"
+    }
   }
 });
 
@@ -45,7 +51,9 @@ var stand = Bodies.rectangle(80, height - 80, 60, 40, {
   isStatic: true,
   mass: 1,
   render: {
-    fillStyle: "blue"
+    sprite: {
+      texture: "../img/stand.jpg"
+    }
   }
 });
 
@@ -57,12 +65,17 @@ Render.run(render);
 
 let t, a, v, s;
 let time, start, end;
+let rotate;
 
 $(".yeet").on("click", function() {
   Body.applyForce(ball, ball.position, {
-    x: 0.1,
+    x: 0.13,
     y: -0.2
   });
+
+  rotate = setInterval(function() {
+    Body.rotate(ball, Math.PI / 12);
+  }, 100);
 
   start = new Date();
   time = setInterval(function() {
@@ -82,6 +95,7 @@ setInterval(function() {
   if (yPos == 677) {
     ball.isStatic = true;
     clearInterval(time);
+    clearInterval(rotate);
     calculations();
     document.getElementById("acc").innerHTML = a.toFixed(3);
     document.getElementById("dist").innerHTML = s.toFixed(3);
