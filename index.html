@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true,
+        }
+      });
+    </script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+      async
+    ></script>
+
     <link rel="stylesheet" href="css/style.css" />
 
     <title>Projectile Motion Simulation</title>
@@ -14,20 +28,20 @@
       Yeet ball
     </button>
 
-    <div class="wind">
-      <p>Air Resistance: <span id="wind"></span> kn</p>
-    </div>
-
     <div class="speed">
-      <p>Velocity: <span id="speed"></span> m/s</p>
+      <p>Velocity: <span id="speed"></span> $ms^{-1}$</p>
     </div>
 
     <div class="acceleration">
-      <p>Acceleration: <span id="acc"></span> m/s/s</p>
+      <p>Acceleration: <span id="acc"></span> $ms^{-2}$</p>
     </div>
 
     <div class="distance">
-      <p>Distance Traveled: <span id="dist"></span> m</p>
+      <p>Distance Traveled: <span id="dist"></span> $m$</p>
+    </div>
+
+    <div class="wind">
+      <p>Air Resistance: <span id="wind"></span> $kn$</p>
     </div>
 
     <script src="js/lib/jquery.js"></script>

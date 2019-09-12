@@ -9,9 +9,10 @@ var engine = Engine.create();
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-let VinitVelocity, HinitVelocity;
-
-var wind = Math.random();
+var min = 0.1;
+var max = 0.005;
+var wind = Math.random() * (+max - +min) + +min;
+document.getElementById("wind").innerHTML = ((wind * 1000) / 1.852).toFixed(3);
 
 var render = Render.create({
   element: document.body,
@@ -57,14 +58,11 @@ Render.run(render);
 let t, a, v, s;
 let time, start, end;
 
-document.getElementById("wind").innerHTML = ((wind * 100) / 1.852).toFixed(3);
-
 $(".yeet").on("click", function() {
-  Body.applyForce(
-    ball,
-    { x: ball.position.x, y: ball.position.y },
-    { x: 1.1, y: -0.9 }
-  );
+  Body.applyForce(ball, ball.position, {
+    x: 0.1,
+    y: -0.2
+  });
 
   start = new Date();
   time = setInterval(function() {
